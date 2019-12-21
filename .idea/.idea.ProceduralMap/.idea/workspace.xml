@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f169fb7a-1135-4706-8899-3507941012dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProceduralMap/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProceduralMap/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EndlessTerrain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EndlessTerrain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapDisplay.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MeshGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MeshGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +25,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/MapDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MeshGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EndlessTerrain.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MeshGenerator.cs" />
       </list>
     </option>
   </component>
@@ -81,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576955579355</updated>
-      <workItem from="1576955580571" duration="2364000" />
+      <workItem from="1576955580571" duration="3788000" />
     </task>
     <servers />
   </component>
@@ -91,10 +90,10 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="WindowStateProjectService">
-    <state x="950" y="419" key="RiderGenerateDialog" timestamp="1576957982617">
+    <state x="950" y="419" key="RiderGenerateDialog" timestamp="1576959150661">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="950" y="419" key="RiderGenerateDialog/0.23.2560.1417/2560.1000.1680.1027@0.23.2560.1417" timestamp="1576957982617" />
+    <state x="950" y="419" key="RiderGenerateDialog/0.23.2560.1417/2560.1000.1680.1027@0.23.2560.1417" timestamp="1576959150661" />
     <state x="943" y="346" width="672" height="678" key="search.everywhere.popup" timestamp="1576958904654">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
