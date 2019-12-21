@@ -32,6 +32,9 @@ public class MapGenerator : MonoBehaviour
     public bool autoUpdate;
 
     public TerrainType[] regions;
+    
+    Queue<MapThreadInfo<MapData>> mapDataQueue = new Queue<MapThreadInfo<MapData>>();
+    Queue<MapThreadInfo<MeshData>> meshDataQueue = new Queue<MapThreadInfo<MeshData>>();
 
     public void DrawMapInEditor()
     {
@@ -52,6 +55,70 @@ public class MapGenerator : MonoBehaviour
                     levelOfDetail),
                 TextureGenerator.TextureFromColorMap(mapData.colorMap, mapChunkSize, mapChunkSize));
         }
+    }
+
+    public void RequestMapData(Action<MapData> callback)
+    {
+        // start mapdata thread
+        ThreadStart threadStart = delegate
+        {
+            MapDataThread(callback);
+        };
+
+        new Thread(threadStart).Start();
+    }
+
+    void MapDataThread(Action<MapData> callback)
+    {
+        //get mapdata
+        // add mapdata and callback to queue
+        MapData mapData = GenerateMapData();
+        lock (mapDataQueue)
+        {
+            mapDataQueue.Enqueue(new MapThreadInfo<MapData>(callback, mapData));
+        }
+    }
+    
+    public void RequestMeshData(Action<MeshData> callback, MapData mapData)
+    {
+        // start mapdata thread
+        ThreadStart threadStart = delegate
+        {
+            MeshDataThread(callback, mapData);
+        };
+
+        new Thread(threadStart).Start();
+    }
+
+    void MeshDataThread(Action<MeshData> callback, MapData mapData)
+    {
+        //get mapdata
+        // add mapdata and callback to queue
+        MeshData meshData = MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail);
+        lock (meshDataQueue)
+        {
+            meshDataQueue.Enqueue(new MapThreadInfo<MeshData>(callback, meshData));
+        }
+    }
+
+    private void Update()
+    {
+        if (mapDataQueue.Count > 0)
+        {
+            for (int i = 0; i < mapDataQueue.Count; i++)
+            {
+                MapThreadInfo<MapData> threadInfo = mapDataQueue.Dequeue();
+                threadInfo.callback(threadInfo.data);
+            } 
+        }
+        if (meshDataQueue.Count > 0)
+        {
+            for (int i = 0; i < meshDataQueue.Count; i++)
+            {
+                MapThreadInfo<MeshData> threadInfo = meshDataQueue.Dequeue();
+                threadInfo.callback(threadInfo.data);
+            } 
+        }    
     }
 
     private MapData GenerateMapData()
@@ -90,6 +157,18 @@ public class MapGenerator : MonoBehaviour
         if (octaves < 0)
         {
             octaves = 0;
+        }
+    }
+
+    struct MapThreadInfo<T>
+    {
+        public readonly Action<T> callback;
+        public readonly T data;
+
+        public MapThreadInfo(Action<T> callback, T data)
+        {
+            this.callback = callback;
+            this.data = data;
         }
     }
 }
